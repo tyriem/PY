@@ -3,7 +3,16 @@
 ### VER: 1.0
 ### DATE: 05-XX-2020
 
-##Declare CALLs
+#####################
+###     CODE      ###
+#####################
+
+### OBJECTIVE ###
+#
+#
+### OBJECTIVE ###
+
+##Declare CALLs & DEFs
 
 
 ##Declare/Input VALs & STRINGs
