@@ -1,13 +1,6 @@
-x = 50
-def func(x):
-    print('x is', x)
-x = 2
-    print('Changed local x to', x)
-func(x)
-print('x is now', x)
+### AUTHOR: TMRM   
+### PROJECT: INTRO TO PYTHON - 
+### VER: 1.0
+### DATE: 05-XX-2020
 
-
-
-
-
-
+input("Enter a string")
