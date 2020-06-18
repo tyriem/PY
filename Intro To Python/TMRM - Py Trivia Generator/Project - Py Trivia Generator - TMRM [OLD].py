@@ -11,23 +11,70 @@ window.title("QUIZ")
 window.grid_columnconfigure(0, weight=1)
 var = tk.StringVar()
 scoreInt = 0
-amount = 1
-cat = 9
-diff = "easy"
+global amount
+global cat_raw
+global cat
+global diff
 
 def selected():
     global selection
     selection = str(var.get())
 
 def start_quiz():
+    cat_raw = cat_combo.get()
+    if cat_raw == 'General Knowledge':
+        cat = 9
+    elif cat_raw == 'Books':
+          cat = 10
+    elif cat_raw == 'Film':
+          cat = 11
+    elif cat_raw == 'Music':
+          cat = 12
+    elif cat_raw == 'Musicals & Theatre':
+          cat = 13
+    elif cat_raw == 'Television':
+          cat = 14
+    elif cat_raw == 'Video Games':
+          cat = 15
+    elif cat_raw == 'Board Games':
+          cat = 16
+    elif cat_raw == 'Nature':
+          cat = 17
+    elif cat_raw == 'Computers':
+          cat = 18
+    elif cat_raw == 'Mathematics':
+          cat = 19
+    elif cat_raw == 'Mythology':
+          cat = 20
+    elif cat_raw == 'Sports':
+          cat = 21
+    elif cat_raw == 'Geography':
+          cat = 22
+    elif cat_raw == 'History':
+          cat = 23
+    elif cat_raw == 'Politics':
+          cat = 24
+    elif cat_raw == 'Art':
+          cat = 25
+    elif cat_raw == 'Celebrities':
+          cat = 26
+    elif cat_raw == 'Animals':
+          cat = 27
+    diff_raw = diff_combo.get()
+    if diff_raw == 'Easy':
+        diff = 'easy'
+    elif diff_raw == 'Normal':
+          diff = 'medium'
+    elif diff_raw == 'Hard':
+          diff = 'hard'
     if text_input.get():
         user_input = text_input.get()
-        payload = (
-        ('amount', amount),
-        ('category', cat),
-        ('difficulty', diff),
-        ('type', 'multiple'),
-        )
+        amount = amount_combo.get()
+        print(amount)
+        print(cat)
+        print(diff)
+        ## CONVERT CAT_RAW TO CAT
+        payload = {'amount' : amount, 'category' : cat, 'difficulty' : diff}
         response = requests.get("https://opentdb.com/api.php?", 
                                 params=payload)
         global text_response
@@ -35,10 +82,10 @@ def start_quiz():
         lb1.configure(text="")
         lb2.configure(text="")
         lb3.configure(text="")
-        cat_combo.destroy()
-        amount_combo.destroy()
-        diff_combo.destroy()
-        start_button.destroy()
+        cat_combo.grid_forget()
+        amount_combo.grid_forget()
+        diff_combo.grid_forget()
+        start_button.grid_forget()
         pretty_json = json.loads(response.text)
         # print (json.dumps(pretty_json, indent=2))
         # print(pretty_json['results'])
@@ -95,7 +142,8 @@ def checked():
        print ("Correct Answer Detected")
        global scoreInt
        scoreInt = scoreInt + 1
-       print("Current Score: ",scoreInt) 
+       print("Current Score: ",scoreInt)
+
     else:
         lb6 = tk.Label(window, text="Sorry, You Answered Incorrectly.")        
         lb6.grid(row=10, column=0, sticky="WE", padx=10, pady=10)
@@ -153,46 +201,6 @@ cat_combo.grid(row=5, column=0, sticky="WE", padx=10)
 
 cat_raw = cat_combo.get()
 
-## CONVERT CAT_RAW TO CAT
-
-if cat_raw == 'General Knowledge':
-	cat = 9	
-elif cat_raw == 'Books':
-	cat = 10
-elif cat_raw == 'Film':
-	cat = 11
-elif cat_raw == 'Music':
-	cat = 12
-elif cat_raw == 'Musicals & Theatre':
-	cat = 13
-elif cat_raw == 'Television':
-	cat = 14
-elif cat_raw == 'Video Games':
-	cat = 15
-elif cat_raw == 'Board Games':
-	cat = 16
-elif cat_raw == 'Nature':
-	cat = 17
-elif cat_raw == 'Computers':
-	cat = 18
-elif cat_raw == 'Mathematics':
-	cat = 19
-elif cat_raw == 'Mythology':
-	cat = 20
-elif cat_raw == 'Sports':
-	cat = 21
-elif cat_raw == 'Geography':
-	cat = 22
-elif cat_raw == 'History':
-	cat = 23
-elif cat_raw == 'Politics':
-	cat = 24
-elif cat_raw == 'Art':
-	cat = 25
-elif cat_raw == 'Celebrities':
-	cat = 26
-elif cat_raw == 'Animals':
-	cat = 27
 
 
 #Difficulty Selector
@@ -204,13 +212,13 @@ lb3.grid(row=6, column=0, sticky="WE", padx=10)
  
 diff_combo = ttk.Combobox(window)
  
-diff_combo['values']= ("easy", "medium", "hard")
+diff_combo['values']= ("Easy", "Normal", "Hard")
  
 diff_combo.current(0) #set the selected item
  
 diff_combo.grid(row=7, column=0, sticky="WE", padx=10)
 
-diff = diff_combo.get()
+diff_raw = diff_combo.get()
 
 start_button = tk.Button(text="START QUIZ", command=start_quiz)
 start_button.grid(row=8, column=0, sticky="WE", padx=10, pady=10)
