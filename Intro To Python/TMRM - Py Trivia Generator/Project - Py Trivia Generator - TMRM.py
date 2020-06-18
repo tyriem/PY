@@ -1,150 +1,155 @@
-### AUTHOR: TMRM   
-### PROJECT: INTRO TO PYTHON - TRIVIA GENERATOR
-### VER: 1.2
-### DATE: 06-16-2020
-
-### Declare CALLs ###
-
-
-### INSTALL REQUESTS ###
-"""
-import subprocess
-import sys
-
-
-def install(requests):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-"""
-### CALL REQUESTS ###
+import tkinter as tk
+import tkinter.ttk as ttk
+import requests
+import json
 import time
 import random
-import turtle
-from tkinter import *
-from tkinter.ttk import *
+
+window = tk.Tk()
+window.geometry("900x550")
+window.title("QUIZ")
+window.grid_columnconfigure(0, weight=1)
+var = tk.StringVar()
+scoreInt = 0
+amount = 1
+cat = 9
+diff = "easy"
 
 def selected():
-    x = radiovar.get()    
+    global selection
+    selection = str(var.get())
 
-## Submit Button
-def clicked():
-    
-    
-    import requests
-    import json
-    lb2.configure(text="")
-    lb3.configure(text="")
-    lb4.configure(text="")
-    cat_combo.destroy()
-    amount_combo.destroy()
-    diff_combo.destroy()
-    lbl.configure(text="LET'S GO")
-    print(amount)
-    print(cat)
-    print(diff)
-    #SET COMPATIBLE PARAMS FOR WEBSITE
-    params = (('amount', amount),('category', cat),('difficulty', diff),('type', 'multiple'),)
-    ## SEND PARAMS TO WEBSITE WITH REQUESTS
-    r = requests.get('https://opentdb.com/api.php?', params = params)
-    ## CLEANING THE TEXT
-    pretty_json = json.loads(r.text)
-    # print (json.dumps(pretty_json, indent=2))
-    # print(pretty_json['results'])
-    quiz = (pretty_json['results'])
-    print ("\n ---------------------------------------------------------")
-    print (type(quiz))
-    print (quiz)
-    #Print the First Category Chosen
-    print (quiz[0]['category'])
-    #Print the First Question Generated
-    print (quiz[0]['question'])
-    #The First Question's Possible Answers
-    #CORRECT ANSWER
-    #print (quiz[0]['correct_answer'])
-    #LIST OF WRONG ANSWERS
-    #print (quiz[0]['incorrect_answers'])
-    #WRONG ANSWERS
-    #print (quiz[0]['incorrect_answers'][0])
-    #print (quiz[0]['incorrect_answers'][1])
-    #print (quiz[0]['incorrect_answers'][2])
-    #Print the Second Category Chosen
-    #print (quiz[1]['category'])
-    print ("---------------------------------------------------------")
-    answer_list = [(quiz[0]['correct_answer']), (quiz[0]['incorrect_answers'][0]), (quiz[0]['incorrect_answers'][1]), (quiz[0]['incorrect_answers'][2])]
-    #randomly arrange answers
-    random.shuffle(answer_list)
-    print (answer_list)
-    #Radio Button Logic
-    lb5 = Label(window, text="Select Your Answer: ")
-    lb5.grid(column=10, row=0)
-    rad1 = Radiobutton(window,text= answer_list[0], indicatoron = 0, value= answer_list[0], command=selected) 
-    rad2 = Radiobutton(window,text= answer_list[1], indicatoron = 0, value= answer_list[1], command=selected)
-    rad3 = Radiobutton(window,text= answer_list[2], indicatoron = 0, value= answer_list[2], command=selected)
-    rad4 = Radiobutton(window,text= answer_list[3], indicatoron = 0, value= answer_list[3], command=selected)  
-    rad1.grid(column=11, row=0)
-    rad2.grid(column=12, row=0)
-    rad3.grid(column=13, row=0)
-    rad3.grid(column=14, row=0)
-    btn2 = Button(window, text="SUBMIT ANSWER", command=check)
-    btn2.grid(column=15, row=0)
-
+def start_quiz():
+    if text_input.get():
+        user_input = text_input.get()
+        payload = (
+        ('amount', amount),
+        ('category', cat),
+        ('difficulty', diff),
+        ('type', 'multiple'),
+        )
+        response = requests.get("https://opentdb.com/api.php?", 
+                                params=payload)
+        global text_response
+        text_response = response.text
+        lb1.configure(text="")
+        lb2.configure(text="")
+        lb3.configure(text="")
+        cat_combo.destroy()
+        amount_combo.destroy()
+        diff_combo.destroy()
+        start_button.destroy()
+        pretty_json = json.loads(response.text)
+        # print (json.dumps(pretty_json, indent=2))
+        # print(pretty_json['results'])
+        global quiz
+        quiz = (pretty_json['results'])
+        print ("\n ---------------------------------------------------------")
+        print (type(quiz))
+        print (quiz)
+        #Print the First Category Chosen
+        print (quiz[0]['category'])
+        #Print the First Question Generated
+        print (quiz[0]['question'])
+        #The First Question's Possible Answers
+        #CORRECT ANSWER
+        #print (quiz[0]['correct_answer'])
+        #LIST OF WRONG ANSWERS
+        #print (quiz[0]['incorrect_answers'])
+        #WRONG ANSWERS
+        #print (quiz[0]['incorrect_answers'][0])
+        #print (quiz[0]['incorrect_answers'][1])
+        #print (quiz[0]['incorrect_answers'][2])
+        #Print the Second Category Chosen
+        #print (quiz[1]['category'])
+        print ("---------------------------------------------------------")
+        answer_list = [(quiz[0]['correct_answer']), (quiz[0]['incorrect_answers'][0]), (quiz[0]['incorrect_answers'][1]), (quiz[0]['incorrect_answers'][2])]
+        #randomly arrange answers
+        random.shuffle(answer_list)
+        print (answer_list)
+        #Question Display:
+        lb4 = tk.Label(window, text=  quiz[0]['question'])        
+        lb4.grid(row=9, column=0, sticky="WE", padx=10, pady=10)
+        #Select Your Answer Prompt:
+        lb4 = tk.Label(window, text="Select Your Answer: ")        
+        lb4.grid(row=10, column=0, sticky="WE", padx=10, pady=10)
+        #Radio Button Logic
+        rad1 = ttk.Radiobutton(window, text= answer_list[0], variable=var, value= answer_list[0], command=selected)
+        rad1.grid(row=11, column=0, sticky="WE", padx=10, pady=10)
+        rad2 = ttk.Radiobutton(window, text= answer_list[1], variable=var, value= answer_list[1], command=selected)
+        rad2.grid(row=12, column=0, sticky="WE", padx=10, pady=10)
+        rad3 = ttk.Radiobutton(window, text= answer_list[2], variable=var, value= answer_list[2], command=selected)
+        rad3.grid(row=13, column=0, sticky="WE", padx=10, pady=10)
+        rad4 = ttk.Radiobutton(window, text= answer_list[3], variable=var, value= answer_list[3], command=selected)  
+        rad4.grid(row=14, column=0, sticky="WE", padx=10, pady=10)
+        btn2 = tk.Button(window, text="SUBMIT ANSWER", command=checked )
+        btn2.grid(row=15, column=0, sticky="WE", padx=10, pady=10)
+    else:
+        text_response = "Please Enter Your Name!"
 
 def checked():
-
-    print(selected.get())
     #GUESS RESOLUTION LOGIC
-    if selected.get() == quiz[0]['correct_answer']:
-       print ("Congratulations!")
-       score = score + 1
+    if selection == quiz[0]['correct_answer']:
+       lb5 = tk.Label(window, text="Great Job, You Answered Correctly.")        
+       lb5.grid(row=10, column=0, sticky="WE", padx=10, pady=10)
+       print ("Correct Answer Detected")
+       global scoreInt
+       scoreInt = scoreInt + 1
+       print("Current Score: ",scoreInt) 
+    else:
+        lb6 = tk.Label(window, text="Sorry, You Answered Incorrectly.")        
+        lb6.grid(row=10, column=0, sticky="WE", padx=10, pady=10)
+        print("Current Score: ",scoreInt)
+
+    
+    textwidget = tk.Text()
+    textwidget.insert(tk.END, text_response)
+    textwidget.grid(row=3, column=0, sticky="WE", padx=10, pady=10)
+
+    credits_label = tk.Label(window, text="Open Trivia DB API by PIXELTAIL GAMES")
+    credits_label.grid(row=10, column=0, sticky="S", padx=10)
 
 
+welcome_label = tk.Label(window,
+                         text="Hello, and welcome to OPEN QUIZ \n Please Enter Your Name:",
+                         font=("Helvetica", 15))
+welcome_label.grid(row=0, column=0, sticky="N", padx=20, pady=10)
 
-
-### GUI WORKSPACE ### 
-window = Tk()
- 
-window.title("OPEN QUIZ")
- 
-window.geometry('1920x1080')
-
-window.config(background="#ffffff")
-
-window.resizable(0,0)
-
-lbl = Label(window, text="Hello, and welcome to OPEN QUIZ")
- 
-lbl.grid(column=0, row=0)
+#Text Input
+text_input = tk.Entry()
+text_input.grid(row=1, column=0, sticky="WE", padx=10)
 
 
 #Question Selector
 
-lb2 = Label(window, text="How many questions would you like? ")
+lb1 = tk.Label(window, text="How many questions would you like? ")
  
-lb2.grid(column=1, row=0)
+lb1.grid(row=2, column=0, sticky="WE", padx=10)
 
  
-amount_combo = Combobox(window)
+amount_combo = ttk.Combobox(window)
  
 amount_combo['values']= (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
  
 amount_combo.current(0) #set the selected item
  
-amount_combo.grid(column=2, row=0)
+amount_combo.grid(row=3, column=0, sticky="WE", padx=10)
 
 amount = amount_combo.get()
 
 #Category Selector
-lb3 = Label(window, text="What Category of Question would you like? ")
+lb2 = tk.Label(window, text="What Category of Question would you like? ")
  
-lb3.grid(column=3, row=0)
+lb2.grid(row=4, column=0, sticky="WE", padx=10)
 
  
-cat_combo = Combobox()
+cat_combo = ttk.Combobox()
  
 cat_combo['values']= ("General Knowledge", "Books", "Film", "Music", "Musicals & Theatre", "Television", "Video Games", "Board Games", "Nature", "Computers", "Mathematics", "Mythology", "Sports", "Geography", "History", "Politics", "Art", "Celebrities", "Animals")
 
 cat_combo.current(0) #set the selected item
  
-cat_combo.grid(column=4, row=0)
+cat_combo.grid(row=5, column=0, sticky="WE", padx=10)
 
 cat_raw = cat_combo.get()
 
@@ -192,105 +197,24 @@ elif cat_raw == 'Animals':
 
 #Difficulty Selector
 
-lb4 = Label(window, text="What difficulty of question would you like? ")
+lb3 = tk.Label(window, text="What difficulty of question would you like? ")
  
-lb4.grid(column=5, row=0)
+lb3.grid(row=6, column=0, sticky="WE", padx=10)
 
  
-diff_combo = Combobox(window)
+diff_combo = ttk.Combobox(window)
  
-diff_combo['values']= ("Easy", "Medium", "Hard")
+diff_combo['values']= ("easy", "medium", "hard")
  
 diff_combo.current(0) #set the selected item
  
-diff_combo.grid(column=6, row=0)
+diff_combo.grid(row=7, column=0, sticky="WE", padx=10)
 
 diff = diff_combo.get()
 
-
-btn1 = Button(window, text="START QUIZ", command=clicked)
- 
-btn1.grid(column=7, row=0)
+start_button = tk.Button(text="START QUIZ", command=start_quiz)
+start_button.grid(row=8, column=0, sticky="WE", padx=10, pady=10)
 
 
-
-
-### CLOSE OUT GUI
-window.mainloop()
-
-"""
-####################################
-# TURTLE CMDs
-##OUTPUTs
-
-
-
-
-t = turtle.Turtle(window)
-#TURTLE: RED LETTER E
-
-t.color("red")
-
-t.down()
-
-t.begin_fill()
-
-t.forward(100)
-
-t.right(90)
-
-t.forward(30)
-
-t.right(90)
-
-t.forward(100)
-
-t.left(90)
-
-t.forward(50)
-
-t.left(90)
-
-t.forward(100)
-
-t.right(90)
-
-t.forward(30)
-
-t.right(90)
-
-t.forward(100)
-
-t.left(90)
-t.forward(50)
-
-t.left(90)
-
-t.forward(100)
-
-t.right(90)
-
-t.forward(30)
-
-t.right(90)
-
-t.forward(130)
-
-t.right(90)
-
-t.forward(190)
-
-t.right(90)
-
-t.forward(130)
-
-t.end_fill()
-
-t.up()
-
-turtle.done()
-
-####################################
-"""
-
-
+if __name__ == "__main__":
+    window.mainloop()
