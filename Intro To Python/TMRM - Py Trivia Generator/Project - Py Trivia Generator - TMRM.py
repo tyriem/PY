@@ -4,19 +4,19 @@ import requests
 import json
 import time
 import random
+import turtle
 
 window = tk.Tk()
 window.geometry("900x550")
 window.title("QUIZ")
 window.grid_columnconfigure(0, weight=1)
+
+
 var = tk.StringVar()
 scoreInt = 0
-questNum = 0
-global amount
-global cat_raw
-global cat
-global diff
+questInt = 0
 
+      
 
 
 def selected():
@@ -71,12 +71,13 @@ def start_quiz():
     elif diff_raw == 'Hard':
           diff = 'hard'
     #user_input = text_input.get()
-    amount = amount_combo.get()
+    global amount
+    amount = int(amount_combo.get())
     print(amount)
     print(cat)
     print(diff)
     ## CONVERT CAT_RAW TO CAT
-    payload = {'amount' : amount, 'category' : cat, 'difficulty' : diff}
+    payload = {'amount' : '1', 'category' : cat, 'difficulty' : diff, 'type' : 'multiple'}
     response = requests.get("https://opentdb.com/api.php?", params=payload)
     global text_response
     text_response = response.text
@@ -136,11 +137,12 @@ def start_quiz():
     rad4 = ttk.Radiobutton(window, text= answer_list[3], variable=var, value= answer_list[3], command=selected)  
     rad4.grid(row=14, column=0, sticky="WE", padx=10, pady=10)
     global btn2
-    btn2 = tk.Button(window, text="SUBMIT ANSWER", command=checked )
+    btn2 = tk.Button(window, text="SUBMIT ANSWER", command=combo)
     btn2.grid(row=15, column=0, sticky="WE", padx=10, pady=10)
 
 
 def checked():
+    print(amount)
     lb4.grid_forget()
     rad1.grid_forget()
     rad2.grid_forget()
@@ -148,7 +150,7 @@ def checked():
     rad4.grid_forget()
     btn2.grid_forget()
     #GUESS RESOLUTION LOGIC
-    if selection == quiz[0]['correct_answer']:
+    if selection == str(quiz[0]['correct_answer']):
        lb6 = tk.Label(window, text="Great Job, You Answered Correctly.")        
        lb6.grid(row=10, column=0, sticky="WE", padx=10, pady=10)
        print ("Correct Answer Detected")
@@ -160,9 +162,76 @@ def checked():
     else:
         lb7 = tk.Label(window, text="Sorry, You Answered Incorrectly.")        
         lb7.grid(row=10, column=0, sticky="WE", padx=10, pady=10)
+        print ("Incorrect Answer Detected")
         print("Current Score: ",scoreInt)
 
+def combo():
+    checked()
+    start_quiz()
+    global questInt
+    questInt = questInt + 1
+    ###ENDGAME LOGIC###
+    if int(questInt) == int(amount):
+       print("ENDGAME")
+       window.destroy()
+       
+       t = turtle.Turtle()
+       #TURTLE: RED T
+       t.speed(10)
+       t.color("red")
+       t.begin_fill()
+       t.forward(200)
+       t.right(90)
+       t.forward(30)
+       t.right(90)
+       t.forward(80)
+       t.left(90)
+       t.forward(200)
+       t.right(90)
+       t.forward(30)
+       t.right(90)
+       t.forward(200)
+       t.left(90)
+       t.forward(90)
+       t.right(90)
+       t.forward(30)
+       t.end_fill()
+       t.up()
+       t.right(90)
+       t.forward(200)
+       #Move to next
+       t.forward(50)
+       t.down()
+       #TURTLE: BLUE H
+       t.color("blue")
+       t.begin_fill()
+       t.forward(30)
+       t.right(90)
+       t.forward(95)
+       t.left(90)
+       t.forward(100)
+       t.left(90)
+       t.forward(95)
+       t.right(90)
+       t.forward(30)
+       t.right(90)
+       t.forward(230)
+       t.right(90)
+       t.forward(30)
+       t.right(90)
+       t.forward(95)
+       t.left(90)
+       t.forward(100)
+       t.left(90)
+       t.forward(95)
+       t.right(90)
+       t.forward(30)
+       t.right(90)
+       t.forward(230)
+       t.end_fill()
+       t.up()
     
+
 #textwidget = tk.Text()
 #textwidget.insert(tk.END, text_response)
 #textwidget.grid(row=3, column=0, sticky="WE", padx=10, pady=10)
@@ -184,32 +253,32 @@ welcome_label.grid(row=0, column=0, sticky="N", padx=20, pady=10)
 #Question Selector
 
 lb1 = tk.Label(window, text="How many questions would you like? ")
- 
+
 lb1.grid(row=2, column=0, sticky="WE", padx=10)
 
- 
+
 amount_combo = ttk.Combobox(window)
- 
+
 amount_combo['values']= (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
- 
+
 amount_combo.current(0) #set the selected item
- 
+
 amount_combo.grid(row=3, column=0, sticky="WE", padx=10)
 
 amount = amount_combo.get()
 
 #Category Selector
 lb2 = tk.Label(window, text="What Category of Question would you like? ")
- 
+
 lb2.grid(row=4, column=0, sticky="WE", padx=10)
 
- 
+
 cat_combo = ttk.Combobox()
- 
+
 cat_combo['values']= ("General Knowledge", "Books", "Film", "Music", "Musicals & Theatre", "Television", "Video Games", "Board Games", "Nature", "Computers", "Mathematics", "Mythology", "Sports", "Geography", "History", "Politics", "Art", "Celebrities", "Animals")
 
 cat_combo.current(0) #set the selected item
- 
+
 cat_combo.grid(row=5, column=0, sticky="WE", padx=10)
 
 cat_raw = cat_combo.get()
@@ -219,16 +288,16 @@ cat_raw = cat_combo.get()
 #Difficulty Selector
 
 lb3 = tk.Label(window, text="What difficulty of question would you like? ")
- 
+
 lb3.grid(row=6, column=0, sticky="WE", padx=10)
 
- 
+
 diff_combo = ttk.Combobox(window)
- 
+
 diff_combo['values']= ("Easy", "Normal", "Hard")
- 
+
 diff_combo.current(0) #set the selected item
- 
+
 diff_combo.grid(row=7, column=0, sticky="WE", padx=10)
 
 diff_raw = diff_combo.get()
@@ -237,5 +306,8 @@ start_button = tk.Button(text="START QUIZ", command=start_quiz)
 start_button.grid(row=8, column=0, sticky="WE", padx=10, pady=10)
 
 
-if __name__ == "__main__":
-    window.mainloop()
+window.mainloop()
+
+
+##ENDGAME
+
