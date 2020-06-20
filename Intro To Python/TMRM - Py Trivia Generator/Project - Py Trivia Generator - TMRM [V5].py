@@ -15,7 +15,6 @@ window.grid_columnconfigure(0, weight=1)
 var = tk.StringVar()
 scoreInt = 0
 questInt = 0
-selection = 0
 
       
 
@@ -152,27 +151,19 @@ def checked():
     rad4.grid_forget()
     btn2.grid_forget()
     #GUESS RESOLUTION LOGIC
-    if selection == 0:
-       lb7 = tk.Label(window, text="Sorry, You Didn't Answer The Question.")        
-       lb7.grid(row=10, column=0, sticky="WE", padx=10, pady=10)
-       print ("Incorrect Answer Detected")
-       global scoreInt
-       print("Current Score: ",scoreInt)
-
-    elif selection == str(quiz[0]['correct_answer']):
+    if selection == str(quiz[0]['correct_answer']):
        lb6 = tk.Label(window, text="Great Job, You Answered Correctly.")        
        lb6.grid(row=10, column=0, sticky="WE", padx=10, pady=10)
        print ("Correct Answer Detected")
+       global scoreInt
        scoreInt = scoreInt + 1
        print("Current Score: ",scoreInt)
 
     else:
-       lb7 = tk.Label(window, text="Sorry, You Answered Incorrectly.")        
-       lb7.grid(row=10, column=0, sticky="WE", padx=10, pady=10)
-       print ("Incorrect Answer Detected")
-       print("Current Score: ",scoreInt)    
-
-        
+        lb7 = tk.Label(window, text="Sorry, You Answered Incorrectly.")        
+        lb7.grid(row=10, column=0, sticky="WE", padx=10, pady=10)
+        print ("Incorrect Answer Detected")
+        print("Current Score: ",scoreInt)
 
 def combo():
     checked()
