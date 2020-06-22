@@ -230,6 +230,11 @@ credits_label = tk.Label(window, text="Open Trivia DB API by PIXELTAIL GAMES", f
 credits_label.grid(row=20, column=0, sticky="WE", padx=10)
 
 
+#INSTRUCTIONS
+instructions_label = tk.Label(window, text="[INSTRUCTIONS FOR PLAY] \n STEP 1: Enter Your Name & Select The Type of Quiz \n STEP 2: Click START QUIZ \n STEP 3: Select The Answer To The Question \n STEP 4: Click SUBMIT ANSWER \n STEP 5: HAVE FUN!", font=("Helvetica", 8))
+instructions_label.grid(row=22, column=0, sticky="WE", padx=10)
+
+#WELCOME
 welcome_label = tk.Label(window, text="Hello, and welcome to OPEN QUIZ \n Please Enter Your Name:", font=("Helvetica", 15))
 welcome_label.grid(row=0, column=0, sticky="N", padx=20, pady=10)
 
