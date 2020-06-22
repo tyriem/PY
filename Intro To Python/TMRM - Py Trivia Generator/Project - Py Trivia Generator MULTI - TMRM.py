@@ -110,7 +110,7 @@ def start_quiz():
     global text_response
     text_response = response.text
     global text_proc
-    text_proc = text_response.replace('&quot;', " ' ").replace('&#039;', " ' ").replace('rsquo;', " ' ").replace('&shy;', ' - ')
+    text_proc = text_response.replace('&quot;', " ' ").replace('&#039;', " ' ").replace('&rsquo;', " ' ").replace('&shy;', ' - ').replace('&ouml;', ' o ')
     lb1.configure(text="")
     lb2.configure(text="")
     lb3.configure(text="")
