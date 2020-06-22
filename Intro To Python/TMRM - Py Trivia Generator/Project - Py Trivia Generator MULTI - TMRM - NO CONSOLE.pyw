@@ -52,6 +52,7 @@ def start_quiz():
     player_two_window.geometry("600x550+600+600")
     player_two_window.title("Player Two")
     player_two_window.grid_columnconfigure(0, weight=1)
+    ## CONVERT CAT_RAW TO CAT
     cat_raw = cat_combo.get()
     if cat_raw == 'General Knowledge':
         cat = 9
@@ -104,7 +105,7 @@ def start_quiz():
     print(amount)
     print(cat)
     print(diff)
-    ## CONVERT CAT_RAW TO CAT
+    
     payload = {'amount' : '1', 'category' : cat, 'difficulty' : diff, 'type' : 'multiple'}
     response = requests.get("https://opentdb.com/api.php?", params=payload)
     global text_response
@@ -421,5 +422,5 @@ start_button.grid(row=11, column=0, sticky="WE", padx=10, pady=10)
 window.mainloop()
 
 
-##ENDGAME
+##END
 
