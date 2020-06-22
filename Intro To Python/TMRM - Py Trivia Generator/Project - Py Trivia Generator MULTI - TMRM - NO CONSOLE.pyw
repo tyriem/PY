@@ -1,17 +1,27 @@
+### IMPORTs ###
+#Import TKInter GUI Engine
 import tkinter as tk
 import tkinter.ttk as ttk
+#Import REQs web module
 import requests
+#Import JSON Processor
 import json
+#Import SYSTime
 import time
+#Import Random Generator
 import random
+#Import Turtle Drawer
 import turtle
 
+### CALLs ###
+
+#Draw initial window
 window = tk.Tk()
 window.geometry("1280x550")
 window.title("QUIZ")
 window.grid_columnconfigure(0, weight=1)
 
-
+### VARs ###
 var_one = tk.StringVar()
 var_two = tk.StringVar()
 scoreOneInt = 0
@@ -23,15 +33,19 @@ selection_two = 0
 
       
 
+### FUNCTIONs ###
 
+#FUNC to select P1 radio button
 def selected_one():
     global selection_one
     selection_one = str(var_one.get())
 
+#FUNC to select P2 radio button
 def selected_two():
     global selection_two
     selection_two = str(var_two.get())
 
+#FUNC to post the question for the players
 def start_quiz():
 
     global name_one
@@ -92,6 +106,7 @@ def start_quiz():
           cat = 26
     elif cat_raw == 'Animals':
           cat = 27
+    ## CONVERT DIFF_RAW TO DIFF
     diff_raw = diff_combo.get()
     if diff_raw == 'Easy':
         diff = 'easy'
@@ -99,19 +114,21 @@ def start_quiz():
           diff = 'medium'
     elif diff_raw == 'Hard':
           diff = 'hard'
-    #user_input = text_input.get()
+    # SET AMOUNT OF Qs
     global amount
     amount = int(amount_combo.get())
+    # DELIVER PAYLOAD TO API
     print(amount)
     print(cat)
     print(diff)
-    
     payload = {'amount' : '1', 'category' : cat, 'difficulty' : diff, 'type' : 'multiple'}
     response = requests.get("https://opentdb.com/api.php?", params=payload)
+    # FORMAT THE API RESPONSE
     global text_response
     text_response = response.text
     global text_proc
     text_proc = text_response.replace('&quot;', " ' ").replace('&#039;', " ' ").replace('rsquo;', " ' ").replace('&shy;', ' - ')
+    # CLEAR THE WINDOW
     lb1.configure(text="")
     lb2.configure(text="")
     lb3.configure(text="")
@@ -124,8 +141,6 @@ def start_quiz():
     diff_combo.grid_forget()
     start_button.grid_forget()
     pretty_json = json.loads(str(text_proc))
-    # print (json.dumps(pretty_json, indent=2))
-    # print(pretty_json['results'])
     global quiz
     quiz = (pretty_json['results'])
     print ("\n ---------------------------------------------------------")
@@ -146,7 +161,7 @@ def start_quiz():
     #quiz[0]['incorrect_answers'][2]
     print ("---------------------------------------------------------")
     answer_list = [(quiz[0]['correct_answer']), (quiz[0]['incorrect_answers'][0]), (quiz[0]['incorrect_answers'][1]), (quiz[0]['incorrect_answers'][2])]
-    #randomly arrange answers
+    #Randomly arrange answers
     random.shuffle(answer_list)
     print (answer_list)
     #Question Display:
@@ -195,7 +210,7 @@ def start_quiz():
     btn2 = tk.Button(window, text="SUBMIT ANSWERS", command=combo)
     btn2.grid(row=10, column=0, sticky="WE", padx=10, pady=10)
 
-
+# FUNC to check P1's Answer
 def checked_one():
     print(amount)
     lb4.grid_forget()
@@ -231,7 +246,7 @@ def checked_one():
     print("Current Score: ",scoreOneInt)
     player_one_window.destroy()
 
-
+# FUNC to check P2's Answer
 def checked_two():
     print(amount)
     lb4.grid_forget()
@@ -265,7 +280,8 @@ def checked_two():
     print("Incorrect Answer Detected")
     print("P2 Current Score: ",scoreTwoInt)
     player_two_window.destroy()
-             
+
+# Combined Function to issue the quiz start and iterate the checking funcs             
 def combo():
     checked_one()
     checked_two()
@@ -276,7 +292,7 @@ def combo():
     if int(questInt) == int(amount):
        print("END")
        window.destroy()
-       #TURTLE
+       #TURTLE Drawing
        canvas = tk.Canvas(master=None,width=900,height=550)
        canvas.pack()
        t = turtle.RawTurtle(canvas)
@@ -332,7 +348,7 @@ def combo():
 #textwidget.insert(tk.END, text_response)
 #textwidget.grid(row=3, column=0, sticky="WE", padx=10, pady=10)
 
-#CREDITS
+#CREDITS 
 credits_label = tk.Label(window, text="Open Trivia DB API by PIXELTAIL GAMES", font=("Helvetica", 8))
 credits_label.grid(row=21, column=0, sticky="WE", padx=10)
 
