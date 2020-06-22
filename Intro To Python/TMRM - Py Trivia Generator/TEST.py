@@ -1,5 +1,6 @@
 import tkinter as tk
 import tkinter.ttk as ttk
+from bs4 import BeautifulSoup
 import requests
 import json
 import time
@@ -7,7 +8,7 @@ import random
 import turtle
 
 window = tk.Tk()
-window.geometry("1280x550")
+window.geometry("1920x550")
 window.title("QUIZ")
 window.grid_columnconfigure(0, weight=1)
 
@@ -83,7 +84,7 @@ def start_quiz():
     payload = {'amount' : '1', 'category' : cat, 'difficulty' : diff, 'type' : 'multiple'}
     response = requests.get("https://opentdb.com/api.php?", params=payload)
     global text_response
-    text_response = html.unescape(str(response.text))
+    text_response = response.text
     lb1.configure(text="")
     lb2.configure(text="")
     lb3.configure(text="")
@@ -92,7 +93,11 @@ def start_quiz():
     amount_combo.grid_forget()
     diff_combo.grid_forget()
     start_button.grid_forget()
-    pretty_json = json.loads(text_response)
+    pretty_json = json.loads(response.text)
+    print("PRETTY VERSION")
+    soup = BeautifulSoup(text_response, 'html.parser')
+    print(soup)
+    print(soup.contents)
     # print (json.dumps(pretty_json, indent=2))
     # print(pretty_json['results'])
     global quiz
@@ -100,8 +105,6 @@ def start_quiz():
     print ("\n ---------------------------------------------------------")
     print (type(quiz))
     print (quiz)
-    ascii_string = quiz.encode('ascii', 'replace')
-    print(ascii_string)
     #Print the Category Chosen
     print (quiz[0]['category'])
     #Print the Question Generated
