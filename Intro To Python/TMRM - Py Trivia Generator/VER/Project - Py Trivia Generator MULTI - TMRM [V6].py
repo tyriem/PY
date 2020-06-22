@@ -18,7 +18,8 @@ scoreOneInt = 0
 scoreTwoInt = 0
 
 questInt = 0
-selection = 0
+selection_one = 0
+selection_two = 0
 
       
 
@@ -156,6 +157,7 @@ def start_quiz():
     global rad1
     rad1 = ttk.Radiobutton(player_one_window, text= answer_list[0], variable=var_one, value= answer_list[0], command=selected_one)
     rad1.grid(row=1, column=0, sticky="WE", padx=10, pady=10)
+    var_one.set(0)
     global rad2
     rad2 = ttk.Radiobutton(player_one_window, text= answer_list[1], variable=var_one, value= answer_list[1], command=selected_one)
     rad2.grid(row=2, column=0, sticky="WE", padx=10, pady=10)
@@ -165,6 +167,7 @@ def start_quiz():
     global rad4
     rad4 = ttk.Radiobutton(player_one_window, text= answer_list[3], variable=var_one, value= answer_list[3], command=selected_one)  
     rad4.grid(row=4, column=0, sticky="WE", padx=10, pady=10)
+    var_one.set(1)
 
     #Select Your Answer Prompt P2:
     lb6 = tk.Label(player_two_window, text="Select Your Answer: ")        
@@ -182,7 +185,8 @@ def start_quiz():
     global rad8
     rad8 = ttk.Radiobutton(player_two_window, text= answer_list[3], variable=var_two, value= answer_list[3], command=selected_two)  
     rad8.grid(row=4, column=0, sticky="WE", padx=10, pady=10)
-
+    
+    
     #SUBMIT Button Logic:
     global btn2
     btn2 = tk.Button(window, text="SUBMIT ANSWERS", command=combo)

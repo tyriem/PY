@@ -1,6 +1,5 @@
 import tkinter as tk
 import tkinter.ttk as ttk
-from bs4 import BeautifulSoup
 import requests
 import json
 import time
@@ -8,7 +7,7 @@ import random
 import turtle
 
 window = tk.Tk()
-window.geometry("1920x550")
+window.geometry("1280x550")
 window.title("QUIZ")
 window.grid_columnconfigure(0, weight=1)
 
@@ -94,10 +93,6 @@ def start_quiz():
     diff_combo.grid_forget()
     start_button.grid_forget()
     pretty_json = json.loads(response.text)
-    print("PRETTY VERSION")
-    soup = BeautifulSoup(text_response, 'html.parser')
-    print(soup)
-    print(soup.contents)
     # print (json.dumps(pretty_json, indent=2))
     # print(pretty_json['results'])
     global quiz

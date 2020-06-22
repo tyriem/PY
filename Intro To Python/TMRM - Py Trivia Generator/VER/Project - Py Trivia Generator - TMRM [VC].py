@@ -122,7 +122,7 @@ def start_quiz():
     print (answer_list)
     #Question Display:
     global lb4
-    lb4 = tk.Label(window, text=  quiz[0]['question'], font=("Helvetica", 18))        
+    lb4 = tk.Label(window, text=  quiz[0]['question'], font=("Helvetica", 20))        
     lb4.grid(row=9, column=0, sticky="WE", padx=10, pady=10)
     #Select Your Answer Prompt:
     lb5 = tk.Label(window, text="Select Your Answer: ")        

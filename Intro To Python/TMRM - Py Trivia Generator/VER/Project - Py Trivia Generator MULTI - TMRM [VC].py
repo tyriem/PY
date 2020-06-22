@@ -7,7 +7,7 @@ import random
 import turtle
 
 window = tk.Tk()
-window.geometry("1280x550")
+window.geometry("1300x550")
 window.title("QUIZ")
 window.grid_columnconfigure(0, weight=1)
 
@@ -42,14 +42,14 @@ def start_quiz():
     global player_one_window
     player_one_window = tk.Toplevel(window)
     p1_label = tk.Label(player_one_window, text = ("Player One: ", str(name_one)))
-    player_one_window.geometry("600x550+0+500")
+    player_one_window.geometry("600x550+0+300")
     player_one_window.title("Player One")
     player_one_window.grid_columnconfigure(0, weight=1)
 
     global player_two_window
     player_two_window = tk.Toplevel(window)
     p2_label = tk.Label(player_two_window, text = ("Player Two: ", str(name_two)))
-    player_two_window.geometry("600x550+600+500")
+    player_two_window.geometry("600x550+600+300")
     player_two_window.title("Player Two")
     player_two_window.grid_columnconfigure(0, weight=1)
     cat_raw = cat_combo.get()
@@ -150,7 +150,7 @@ def start_quiz():
     print (answer_list)
     #Question Display:
     global lb4
-    lb4 = tk.Label(window, text=  quiz[0]['question'], font=("Helvetica", 18))        
+    lb4 = tk.Label(window, text=  quiz[0]['question'], font=("Helvetica", 20))        
     lb4.grid(row=9, column=0, sticky="WE", padx=10, pady=10)
     #Select Your Answer Prompt P1:
     lb5 = tk.Label(player_one_window, text="Select Your Answer: ")        
@@ -334,11 +334,6 @@ def combo():
 #CREDITS
 credits_label = tk.Label(window, text="Open Trivia DB API by PIXELTAIL GAMES", font=("Helvetica", 8))
 credits_label.grid(row=21, column=0, sticky="WE", padx=10)
-
-#INSTRUCTIONS
-#CREDITS
-instructions_label = tk.Label(window, text="[INSTRUCTIONS FOR PLAY] \n STEP 1: Both Players Enter Their Name & Select The Type of Quiz \n STEP 2: Click START QUIZ \n STEP 3: Each Player Selects Their Answer To The Question \n STEP 4: Click SUBMIT ANSWER \n STEP 5: HAVE FUN!", font=("Helvetica", 8))
-instructions_label.grid(row=22, column=0, sticky="WE", padx=10)
 
 #WELCOME
 welcome_label = tk.Label(window, text="Hello, and welcome to OPEN QUIZ", font=("Helvetica", 15))
