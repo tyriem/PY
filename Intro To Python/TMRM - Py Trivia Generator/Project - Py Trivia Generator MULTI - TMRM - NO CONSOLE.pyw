@@ -225,25 +225,25 @@ def checked_one():
        lb7.grid(row=10, column=0, sticky="WE", padx=10, pady=10)
        print ("Incorrect Answer Detected")
        global scoreOneInt
-       print("Current Score: ",scoreOneInt)
+       print("P1 Current Score: ",scoreOneInt)
 
     elif selection_one == str(quiz[0]['correct_answer']):
        lb7 = tk.Label(window, text="Great Job Player One, You Answered Correctly.")        
        lb7.grid(row=10, column=0, sticky="WE", padx=10, pady=10)
        print ("Correct Answer Detected")
        scoreOneInt = scoreOneInt + 1
-       print("Current Score: ",scoreOneInt)
+       print("P1 Current Score: ",scoreOneInt)
 
     else:
        lb7 = tk.Label(window, text="Sorry Player One, You Answered Incorrectly.")        
        lb7.grid(row=10, column=0, sticky="WE", padx=10, pady=10)
        print ("Incorrect Answer Detected")
-       print("Current Score: ",scoreOneInt)
+       print("P1 Current Score: ",scoreOneInt)
 
     lb8 = tk.Label(window, text=('PLAYER ONE SCORE: ', str(scoreOneInt)), font=("Helvetica", 20))        
     lb8.grid(row=19, column=0, sticky="WE", padx=10, pady=10)
     print("Incorrect Answer Detected")
-    print("Current Score: ",scoreOneInt)
+    print("P1 Current Score: ",scoreOneInt)
     player_one_window.destroy()
 
 # FUNC to check P2's Answer
