@@ -12,7 +12,7 @@ numbers = [
 951, 402, 984, 651, 360, 69, 408, 319, 601, 485, 980, 507, 725, 547, 544
 ]
 
-for number in number:
+for number in numbers:
     if number == 544:
         break
 
