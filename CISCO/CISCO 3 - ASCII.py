@@ -4,8 +4,11 @@
 ### DATE: 04-29-2021
 
 ### OBJECTIVE ###
-#  Using any of the abover website select an ASCII art that you would like to replicate using Python.
-#Feel free to be as creative as you would like to be. We should be able to recognize your art work.
+#  Using any of the provided website resources select an ASCII art that you would like to replicate using Python.
+# Feel free to be as creative as you would like to be. We should be able to recognize your art work.
+# https://www.asciiart.eu/
+# https://asciiart.website/
+# https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
 ### OBJECTIVE ###
 
 #####################
