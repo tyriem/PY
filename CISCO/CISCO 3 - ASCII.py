@@ -4,7 +4,7 @@
 ### DATE: 04-29-2021
 
 ### OBJECTIVE ###
-#  Using any of the provided website resources select an ASCII art that you would like to replicate using Python.
+# Using any of the provided website resources select an ASCII art that you would like to replicate using Python.
 # Feel free to be as creative as you would like to be. We should be able to recognize your art work.
 # https://www.asciiart.eu/
 # https://asciiart.website/
@@ -30,7 +30,7 @@ while True:
     time.sleep(.5)
 # Print function to print 10 new lines to clear the screen between images
     print('\n'*10)
-# Block ''' Print function to print the image
+# Block ''' Print function to print the ASCII image
     print(
     '''
      __________________________
