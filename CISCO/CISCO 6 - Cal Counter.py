@@ -43,12 +43,21 @@ numCalUser = int(input("PLEASE ENTER THE AMOUNT OF CALORIES IN YOUR DIET TODAY: 
 #Eval Full Name from First & Last
 stringFullName = stringFirstName + " " + stringLastName
 
-#ELIF Eval charGen from Sex
+
 stringRawGen = (input("PLEASE ENTER YOUR SEX (Male, Female, Other): "))
-if stringRawGen == "M" or stringRawGen == "m" or stringRawGen == "Male" or stringRawGen == "male":
-        charGen = 'm'
-else:
-   charGen = 'f'
+
+#Create stringGenLower from stringRawGen
+stringGenLower = stringRawGen.lower()
+
+#Create charGen from stringRawGen
+charGen = stringGenLower[0:1]
+
+# DEPRECATED
+#if stringRawGen == "M" or stringRawGen == "m" or stringRawGen == "Male" or stringRawGen == "male":
+#        charGen = 'm'
+#else:
+#   charGen = 'f'
+# DEPRECATED
 
 
 
@@ -63,7 +72,7 @@ if numAge >= 300:
    
 else:
    print("Thank you, " + stringFullName + ".")
-   print("You are " + str(numAge) + "years old.")
+   print("You are " + str(numAge) + " years old.")
 
 
 
