@@ -78,7 +78,7 @@ elif numCalUser <= numCalMale and charGen == "m":
 elif numCalUser <= 9000:
    print("Warning. Your caloric intake of " + str(numCalUser) + " calories is above your calorie allowance for the day.")
 
-elif numCalUser >= 9000:
+elif numCalUser > 9000:
    print("Your caloric intake is over 9000! Please seek medical attention immediately.")
    
 else:
