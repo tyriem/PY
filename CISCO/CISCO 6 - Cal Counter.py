@@ -4,7 +4,7 @@
 ### DATE: 05-05-2021
 
 ### OBJECTIVE ###
-#The suggested caloric intake for females is 2000 cal./day, for males it is 2500;
+# The suggested caloric intake for females is 2000 cal./day, for males it is 2500;
 # Write a program that checks how many calories someone takes in a day versus these suggestions
 ### OBJECTIVE ###
 
