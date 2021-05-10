@@ -4,7 +4,7 @@
 ### DATE: 05-05-2021
 
 ### OBJECTIVE ###
-#The suggested caloric intake for females is 2000 cal./day, for males it is 2005;
+#The suggested caloric intake for females is 2000 cal./day, for males it is 2500;
 # Write a program that checks how many calories someone takes in a day versus these suggestions
 ### OBJECTIVE ###
 
@@ -65,8 +65,13 @@ print("-------------------------------------------------------------------------
 
 ## CALCs ##
 
-# ELIF Evaluate intAge against reasonable values
-if numAge >= 300:
+# ELIF Evaluate numAge against reasonable values
+if numAge < 18:
+   print("Thank you, kid.")
+   print("You are too young to be using this calculator.")
+   exit()
+
+elif numAge >= 300:
    print("Thank you, Methuselah.")
    print("Aren't you a bit old to be using this calculator?")
    
@@ -76,7 +81,7 @@ else:
 
 
 
-# Evaluate intCalUser against numCal values
+# Evaluate numCalUser against numCal values
 
 if numCalUser <= numCalFemale:
    print("Your caloric intake of " + str(numCalUser) + " calories is within your calorie allowance for the day.")

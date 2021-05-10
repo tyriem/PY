@@ -1,15 +1,15 @@
 ### AUTHOR: TMRM   
-### PROJECT: INTRO TO PYTHON - 
+### PROJECT: NEURAL NETWORKS 
 ### VER: 1.0
-### DATE: 05-XX-2020
+### DATE: 05-10-2021
 
-##Declare CALLs
-
-
-##Declare/Input VALs & STRINGs
+### Declare CALLs ###
 
 
-##CALCs
+### Declare/Input VALs & STRINGs ###
 
 
-##OUTPUTs
+### CALCs ###
+
+
+### OUTPUTs ###
