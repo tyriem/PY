@@ -1,10 +1,10 @@
 ### AUTHOR: TMRM   
 ### PROJECT: CISCO DevNet - Shop Calc
-### VER: 1.0
+### VER: 1.5
 ### DATE: 05-XX-2021
 
 ### OBJECTIVE ###
-# Write a program that monitors a user’s shopping trip and calculates how much the spent
+# Write a program that monitors a user’s shopping trip and calculates how much they spent
 # Get the program to ask for the firstItem bought so that the computer can remember this
 # Develop the program to ask for and remember the costofthefirstItem bought, what the secondItem bought was, and the costofthesecondItem.
 # Develop the program further so that it calculates the total cost of the items bought and then displays what was bought and the total amount spent.
