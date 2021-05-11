@@ -25,21 +25,47 @@ print('''
 ##Declare CALLs & DEFs
 
 ## Declare/Input VALs & STRINGs ##
+
+#COUNTERs
 itemCount = 1
 total = 0
 
+#LISTs
+groceryList = []
+groceryPriceList = []
+groceryPriceVatList = []
+
+
+#WHILE LOOP TO MOVE THROUGH ITEM ADDITIONS
 while itemCount < 999:
+    #INPUT: TYPE OF ITEM
+    typeItem = input("Name of Item # " + str(itemCount) + ": ")
+    #ADD TYPE OF ITEM TO LIST "typeItem"
+    groceryList.append(typeItem)
+    #INPUT: QUANTITY OF ITEM
     quantity = int(input("Item # " + str(itemCount) + " Quantity = "))
-    price = float(input("Item #" + str(itemCount) + " Price = "))
+    #INPUT: RAW PRICE OF ITEM
+    rawPrice = input("Item #" + str(itemCount) + " Price = ")
+    #DATA-VAL: PRICE WITHOUT CASHINO SYMBOL ($)
+    price = float(rawPrice.strip("$"))
+
+    #CALC: TOTAL PRICE OF ITEM(S)
     total = (total + (quantity * price))
+    #VAT PERCENTAGE (12.5%)
     vat_AB = float(0.125)
+    #CALC: VAT ON ITEM
     vat = total * vat_AB
+    #CALC: FINAL PRICE WITH VAT
     final = total + vat
+    #ADD TYPE OF ITEM TO LIST "typeItem"
+    groceryPriceVatList.append(final)
+
+### OUTPUTs ###
     print (str("[Receipt]"))
     #TALLY
     print (str("ITEM #" + str(itemCount) + " Price:"))
     print ("$" + str(quantity * price))
-
+    groceryPriceList.append(quantity * price)
     #SPACER
     print ("---------------------")
 
@@ -66,5 +92,12 @@ while itemCount < 999:
 
     #SPACER
     print ("---------------------")
+    # GROCERY LIST
+    #Prints the amount of items in the list
+    print("You now have " + str(len(groceryList)) + " item(s) in your cart.")
+    #Prints the lists
+    print("You have the following item(s) in your cart: " + str(groceryList))
+    print("Their price before VAT is/are: " + str(groceryPriceList))
+    print("Their price after VAT is/are: " + str(groceryPriceVatList))
     print ("---------------------")
     print ("---------------------")
