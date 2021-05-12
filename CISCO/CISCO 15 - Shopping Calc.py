@@ -37,7 +37,7 @@ groceryPriceVatList = []
 
 
 #WHILE LOOP TO MOVE THROUGH ITEM ADDITIONS
-while itemCount < 999:
+while itemCount < 9999:
     #INPUT: TYPE OF ITEM
     typeItem = input("Name of Item # " + str(itemCount) + ": ")
     #ADD TYPE OF ITEM TO LIST "typeItem"
