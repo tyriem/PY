@@ -46,7 +46,7 @@ while itemCount < 9999:
     quantity = int(input("Item # " + str(itemCount) + " Quantity = "))
     #INPUT: RAW PRICE OF ITEM
     rawPrice = input("Item #" + str(itemCount) + " Price = ")
-    #DATA-VAL: PRICE WITHOUT CASHINO SYMBOL ($)
+    #DATA-EVAL: PRICE WITHOUT CASHINO SYMBOL ($)
     price = float(rawPrice.strip("$"))
 
     #CALC: TOTAL PRICE OF ITEM(S)

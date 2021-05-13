@@ -85,8 +85,8 @@ if charNetwork == "a" or charNetwork == "b"or charNetwork == "n":
     #SPACER
     print ("---------------------")
     #PRINT ESTIMATE: ANNUAL
-    print("AT THIS USAGE LEVEL YOUR ESTIMATED ANNUAL BILL IS: $" + str(annual))
+    print("AT THIS USAGE LEVEL YOUR ESTIMATED ANNUAL BILL IS: $" + str(round(annual, 2)))
     print ("---------------------")
     
 else:
-    print ("WE DO NOT DETECT A VALID NETWORK PROVIDER")
+    print ("INVALID NETWORK PROVIDER DETECTED")
