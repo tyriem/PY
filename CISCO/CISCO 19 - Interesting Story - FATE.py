@@ -26,11 +26,6 @@ AGE = input("Please enter your age: ")
 
 HEROINE = input("Please enter the name of your favourite female: ") 
 
-WISH = input("What super-power would you wish for? ") 
-
-RANDOM = input("Please enter a random word, the weirder the better: ") 
-
-FAMOUS = input("Please enter the name of your favourite famous person: ") 
 
 stringFateRaw = """
 It was a thrust like lightning.
@@ -1328,6 +1323,6 @@ The battle I've waited ten years for is about to commence....
 
 stringFate1 = stringFateRaw.replace("Archer", NAME)
 stringFate2 = stringFate1.replace("Rin", HEROINE)
-stringFate3 = stringFate2.replace("Tohsaka", HEROINE)
+stringFate = stringFate2.replace("Tohsaka", HEROINE)
 
 print(stringFate)
