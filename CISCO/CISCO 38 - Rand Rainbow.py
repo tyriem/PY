@@ -27,5 +27,4 @@ index = random.randint(0,6)
 ### OUTPUT ###
 
 # PRINT a random entry in rainbowList
-
 print(rainbowList[index])
