@@ -22,10 +22,17 @@ print('''
 ###################
 ''')
 
-### IMPORTs & DEFs ###
+### IMPORTs, INITs & DEFs ###
 
 # IMPORT the random module
 import random
+
+
+# INIT COUNTER count_wins
+count_wins = 0
+
+# INIT COUNTER count_loss
+count_loss = 0
 
 # DEFine the func_rules function
 def func_rules():
@@ -55,6 +62,10 @@ def func_switch_dice_img(*args):
     
 # DEFine the func_roll function and pass it dice_one & dice_two
 def func_roll(dice_one,dice_two):
+    #ACCESS GLOBAL VAR count_wins 
+    global count_wins
+    #ACCESS GLOBAL VAR count_loss
+    global count_loss
     # PRINT Inform the user of their first roll
     print("Dice One was a: " + str(dice_one))
 
@@ -75,20 +86,30 @@ def func_roll(dice_one,dice_two):
     # Inform the user of their overall roll
     print("Your Roll Was: ",dice)
 
-    # Spacer
+    # PRINT Spacer
     print("-----------------")
     
-    # IF ELIF ELSE statement to evaluate their roll and inform user of their results
+    # IF ELIF ELSE statement to evaluate their roll, iterate counts and inform user of their results
     if dice_one == dice_two:
         print("Wow, You Got A Double!")
+        count_wins += 1
     elif dice == 7:
         print("You Won!")
+        count_wins += 1
     elif dice == 11:
         print("You Won!")
+        count_wins += 1
     else:
         print("You Lose...")
+        count_loss += 1
         
-    # Spacer
+    # PRINT Spacer
+    print("-----------------")
+
+    # PRINT Wins & Losses
+    print("You have " + str(count_wins) + " wins & " + str(count_loss) + " losses.")
+
+    # PRINT Spacer
     print("-----------------")
 
 
@@ -97,20 +118,27 @@ def func_roll(dice_one,dice_two):
 # CALL func_rules
 func_rules()
 
-
 # INPUT User's Keystroke
 key_input = input("Press Enter Key to Roll The Dice.")
 
-# PRINT Spacer
-print("-----------------")
 
-# CALL random to roll dice_one
-dice_one = random.randint(1,6)
-# CALL random to roll dice_two
-dice_two = random.randint(1,6)
+# INIT WHILE LOOP - TRUE
+while True:
 
+    # PRINT Spacer
+    print("-----------------")
 
+    # CALL random to roll dice_one
+    dice_one = random.randint(1,6)
+    # CALL random to roll dice_two
+    dice_two = random.randint(1,6)
 
-#CALL func_roll | dice_one , dice_two
-func_roll(dice_one,dice_two)
+    #CALL func_roll | dice_one , dice_two
+    func_roll(dice_one,dice_two)
 
+# END WHILE LOOP - TRUE
+    play_again = input("Press ENTER to play again")
+    if play_again == "":
+       continue
+    else:
+       break
