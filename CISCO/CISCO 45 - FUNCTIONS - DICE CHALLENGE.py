@@ -40,7 +40,7 @@ def func_rules():
 
 # DEFine the func_switch_dice_img switch function and pass it WILDCARD(*) ARGUMENTS
 def func_switch_dice_img(*args):
-    #SWITCH STATEMENT switcher
+    # SWITCH statement switcher
     switcher = {
         1: "+-----+\n|     |\n|  o  |\n|     |\n+-----+",
         2: "+-----+\n| o   |\n|     |\n|   o |\n+-----+",
@@ -49,7 +49,7 @@ def func_switch_dice_img(*args):
         5: "+-----+\n| o o |\n|  o  |\n| o o |\n+-----+",
         6: "+-----+\n| o o |\n| o o |\n| o o |\n+-----+"
     }
-    #PRINT SWITCH STATEMENT VALUE
+    # PRINT SWITCH value
     print(switcher.get(*args))
 
     
@@ -77,6 +77,7 @@ def func_roll(dice_one,dice_two):
 
     # Spacer
     print("-----------------")
+    
     # IF ELIF ELSE statement to evaluate their roll and inform user of their results
     if dice_one == dice_two:
         print("Wow, You Got A Double!")
