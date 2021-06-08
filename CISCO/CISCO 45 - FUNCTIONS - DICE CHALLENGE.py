@@ -96,7 +96,6 @@ func_rules()
 
 
 # INPUT User's Keystroke
-
 key_input = input("Press Enter Key to Roll The Dice.")
 
 # PRINT Spacer
