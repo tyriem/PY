@@ -33,13 +33,14 @@ def func_rules():
     print("-----------------")
 
     # PRINT Rules
-    print("To Win You Must: \n A) Roll a 7, 11 \n B) Roll a Double")
+    print("To Win You Must: \n A) Roll a 7 or 11 \n B) Roll a Double")
 
     # PRINT Spacer
     print("-----------------")
 
 # DEFine the func_switch_dice_img switch function and pass it WILDCARD(*) ARGUMENTS
 def func_switch_dice_img(*args):
+    #SWITCH STATEMENT switcher
     switcher = {
         1: "+-----+\n|     |\n|  o  |\n|     |\n+-----+",
         2: "+-----+\n| o   |\n|     |\n|   o |\n+-----+",
@@ -48,7 +49,8 @@ def func_switch_dice_img(*args):
         5: "+-----+\n| o o |\n|  o  |\n| o o |\n+-----+",
         6: "+-----+\n| o o |\n| o o |\n| o o |\n+-----+"
     }
-    print (switcher.get(*args))
+    #PRINT SWITCH STATEMENT VALUE
+    print(switcher.get(*args))
 
     
 # DEFine the func_roll function and pass it dice_one & dice_two
