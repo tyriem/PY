@@ -67,7 +67,7 @@ def compute_pay(numHours,numWage):
 ## ACCEPT USER INPUT
 
 rawNumWage = input("ENTER YOUR HOURLY WAGE: ")
-# STRIP CASHINO SYMBOL
+# STRIP CASHINO SYMBOL ($)
 stringWage = rawNumWage.replace("$","")
 # CONVERT TO FLOAT
 numWage = float(stringWage)
