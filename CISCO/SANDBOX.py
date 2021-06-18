@@ -1,8 +1,4 @@
-dictionary = {'one': 'two', 'three': 'one', 'two': 'three'}
-v = dictionary['one']
+import math
+import inspect
 
-for k in range(len(dictionary)):
-    v = dictionary[v]
-
-
-print(v)
+print(inspect.getmembers(math))
