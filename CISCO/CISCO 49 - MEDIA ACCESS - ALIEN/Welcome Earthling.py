@@ -1,15 +1,19 @@
-### AUTHOR: TMRM   
-### PROJECT: INTRO TO PYTHON - GUI: Cloak An Alien
+### AUTHOR: TMRM
+### CONTRIBUTORS:   
+### PROJECT: CISCO DevNet - MEDIA ACCESS - ALIEN
 ### VER: 1.0
-### DATE: 05-08-2020
-
-#####################
-###  GUI  Alien   ###
-#####################
+### DATE: 06-XX-2021
 
 ### OBJECTIVE ###
 #Make a GUI that controls an image of an alien appearing and disappearing
 ### OBJECTIVE ###
+
+print('''
+#####################
+###     ALIEN     ###
+###     MEDIA    ###  
+#####################
+''')
 
 ### Declare CALLs & DEFs ###
 
