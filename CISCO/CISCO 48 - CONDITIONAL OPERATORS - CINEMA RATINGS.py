@@ -25,7 +25,7 @@ print('''
 
 
 ### VARs & CALCs ###
-age = int(input("How old are you?"))
+age = int(input(" Welcome to the Cinema. How old are you?"))
 
 # EVAL Selection
 if age >= 18:
@@ -57,7 +57,7 @@ elif age >= 4  and age < 8:
 
 
 elif age >= 0  and age < 3:
-    print("GOO GOO GA GA!")
+    print("GOO GOO GA GA! (WHERE ARE YOUR PARENTS")
 
 else:
     print("INVALID AGE, PLEASE ENTER AGAIN")

@@ -41,7 +41,7 @@ buttonON.pack(side=LEFT) #tell tkinter to put objects in one row
 buttonOFF = Button(root, text="Hide", width=5, height=2, command=hideAlien)
 buttonOFF.pack(side=LEFT) #tell tkinter to put objects in one row
 
-buttonQUIT = Button(root, text="ET GO HOME", width=10, height=2, command=buttonQuit)
+buttonQUIT = Button(root, text="E.T. GO HOME!", width=10, height=2, command=buttonQuit)
 buttonQUIT.pack(side=LEFT) #tell tkinter to put objects in one row
 
 ### IMAGE LOGIC ###
