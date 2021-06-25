@@ -1,7 +1,7 @@
 ### AUTHOR: TMRM
 ### CONTRIBUTORS:   
 ### PROJECT: CISCO DevNet - CONDITIONAL OPERATORS - CINEMA RATINGS
-### VER: 1.0
+### VER: 1.2
 ### DATE: 06-XX-2021
 
 
@@ -61,5 +61,3 @@ elif age >= 0  and age < 3:
 
 else:
     print("INVALID AGE, PLEASE ENTER AGAIN")
-
-        
