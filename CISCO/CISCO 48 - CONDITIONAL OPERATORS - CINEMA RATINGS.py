@@ -1,9 +1,8 @@
 ### AUTHOR: TMRM
-### CONTRIBUTORS:   
-### PROJECT: CISCO DevNet - CONDITIONAL OPERATORS - CINEMA RATINGS
-### VER: 1.0
-### DATE: 06-XX-2021
-
+# CONTRIBUTORS:
+# PROJECT: CISCO DevNet - CONDITIONAL OPERATORS - CINEMA RATINGS
+### VER: 1.2
+# DATE: 06-XX-2021
 
 ### OBJECTIVE ###
 # According to the British Board of Film Classification, movies shown at the cinema in the UK should have one of the following age certificate ratings:
@@ -41,14 +40,14 @@ elif age >= 12 and age < 15:
     else:
         print("YOU CAN VIEW THE FOLLOWING RATED FILMS: U, PG, 12")
 
-elif age >= 8  and age < 12:
+elif age >= 8 and age < 12:
     adult = input("Are you with an adult? (YES OR NO)")
     if adult == "yes" or adult == "Yes" or adult == "YES" or adult == "y":
         print("YOU CAN VIEW THE FOLLOWING RATED FILMS: U, PG")
     else:
         print("YOU SHOULDN'T BE HERE UNATTENDED")
 
-elif age >= 4  and age < 8:
+elif age >= 4 and age < 8:
     adult = input("Are you with an adult? (YES OR NO)")
     if adult == "yes" or adult == "Yes" or adult == "YES" or adult == "y":
         print("YOU CAN VIEW THE FOLLOWING RATED FILMS: U")
@@ -56,7 +55,7 @@ elif age >= 4  and age < 8:
         print("YOU SHOULDN'T BE HERE UNATTENDED")
 
 
-elif age >= 0  and age < 3:
+elif age >= 0 and age < 3:
     print("GOO GOO GA GA! (WHERE ARE YOUR PARENTS")
 
 else:
